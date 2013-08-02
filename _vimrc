@@ -9,7 +9,7 @@ filetype off
 " set helpfile=$VIMRUNTIME/doc/help.txt
  
 """ Vundle '''
-set rtp+=~/.vim/vundle/
+set rtp+=~/vimfiles/vundle.git/ 
 call vundle#rc()
 filetype plugin on
 Bundle 'Vundle'
