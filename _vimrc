@@ -12,7 +12,7 @@ filetype off
 set rtp+=~/dotfiles/vimfiles/vundle.git/ 
 call vundle#rc()
 filetype plugin on
-Bundle 'Vundle'
+Bundle 'gmarik/vundle'
  
 " 利用中のプラグインをBundle
  Bundle 'Shougo/neocomplcache'
