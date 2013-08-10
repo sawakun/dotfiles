@@ -27,7 +27,7 @@ Bundle 'rails.vim'
 " Bundle 'motemen/git-vim'
 " Bundle 'git-commit'
 Bundle 'TwitVim'
-
+Bundle 'derekwyatt/vim-scala'
 
 
 
