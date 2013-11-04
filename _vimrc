@@ -49,11 +49,15 @@ set showcmd
 "括弧入力時の対応する括弧を表示
 set showmatch
 "検索結果文字列のハイライトを有効にしない
-set nohlsearch
+"set nohlsearch
 "ステータスラインを常に表示
 set laststatus=2
 
+"コメント行から改行すると「#」が自動挿入さるのを無効化
+setlocal formatoptions-=r
+setlocal formatoptions-=o
 
+"ステータスラインに文字コードと改行文字を表示する
 function! GetB()
   let c = matchstr(getline('.'), '.', col('.') - 1)
   let c = iconv(c, &enc, &fenc)
@@ -82,7 +86,6 @@ func! String2Hex(str)
   return out
 endfunc
 
-"ステータスラインに文字コードと改行文字を表示する
 " set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
 if winwidth(0) >= 120
   set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=[%{GetB()}]\ %l,%c%V%8P

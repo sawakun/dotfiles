@@ -1,0 +1,40 @@
+# Application Shortcuts
+#alias safari='open -g -a safari' # ターミナルからSafariを開く
+#alias console='open -a console' # ターミナルからコンソールを開く
+
+# for shortcut
+alias ls='ls -GwF'
+alias la='ls -alh'
+alias ll='ls -l'
+alias t='tar zxvf'
+alias t-='tar xvf -'
+alias b='bzip2 -dc'
+alias dh='df -h'
+alias vi='vim'
+alias sr='screen -d -R'
+alias grep='grep --exclude=*.svn*'
+alias greprn='grep -rn --exclude=*.svn*'
+#alias bye='sudo shutdown -h now'
+
+# vi モードでコマンドライン編集する
+set -o vi
+# emacs モードでコマンドライン編集する
+# set -o emacs
+
+PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]^_^\[\e[0m\]; else echo \[\e[31m\]O_O\[\e[0m\]; fi\`[\u@\h:\w]\\$ "
+#間違ったコマンドを入力すると顔が変わるプロンプト
+
+# define prompt color
+if [ $SSH_CONNECTION ] || [ $REMOTEHOST ]; then
+color_ok="blue"; color_ng="red"
+elif [ `hostname | grep 'vagrant'` ]; then
+color_ok="magenta"; color_ng="yellow"
+else
+color_ok="green"; color_ng="yellow"
+fi
+
+# define color by $?, [count]name, and float $.
+PROMPT='%{%(!.$bg[default].%(?.$bg[$color_ok].$bg[$color_ng]))%}\
+       %m%{$reset_color%} \
+       %{$fg[blue]%}%B\$%b%{$reset_color%} '
+
