@@ -2,12 +2,14 @@ syntax on
 set nocompatible
 set number
 
-filetype off
+" filetype off
 """ pathogen をコメントアウト
 " call pathogen#runtime_append_all_bundles()
 " call pathogen#helptags()
 " set helpfile=$VIMRUNTIME/doc/help.txt
- 
+
+filetype indent on
+
 """ Vundle '''
 set rtp+=~/dotfiles/vimfiles/vundle.git/ 
 call vundle#rc()
@@ -28,8 +30,9 @@ Bundle 'rails.vim'
 " Bundle 'git-commit'
 Bundle 'TwitVim'
 Bundle 'derekwyatt/vim-scala'
-
-
+Bundle 'surround.vim'
+Bundle 'neocomplcache'
+Bundle 'h1mesuke/vim-alignta'
 
 "インデントはスマートインデント
 set smartindent
@@ -53,9 +56,44 @@ set showmatch
 "ステータスラインを常に表示
 set laststatus=2
 
-"コメント行から改行すると「#」が自動挿入さるのを無効化
-setlocal formatoptions-=r
-setlocal formatoptions-=o
+" タブの画面上での幅
+set tabstop=2
+" インデントの設定をファイルタイプ別に行う
+"   (shiftwidth=スマートインデントの幅)
+"   (tabstop=タブの画面上での幅)
+"   (softtabstop=??? デフォルトは tabstop と同じらしい)
+augroup vimrc
+autocmd! FileType perl setlocal shiftwidth=4 tabstop=2 softtabstop=2
+autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType css  setlocal shiftwidth=4 tabstop=2 softtabstop=2
+autocmd! FileType eruby  setlocal shiftwidth=4 tabstop=2 softtabstop=2
+augroup END
+"
+" タブをスペースに展開しない (expandtab:展開する)
+set expandtab
+" 自動的にインデントする (noautoindent:インデントしない)
+set autoindent
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=indent,eol,start
+" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
+set wrapscan
+" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+set showmatch
+" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
+set wildmenu
+" テキスト挿入中の自動折り返しを日本語に対応させる
+set formatoptions+=mM
+
+"コメント行から改行すると「#」が自動挿入されるのを無効化
+set formatoptions-=r
+set formatoptions-=o
+
+"foldmethod
+set foldmethod=syntax
+let perl_fold=1
+set foldlevel=100 "Don't autofold anything
+
+
 
 "ステータスラインに文字コードと改行文字を表示する
 function! GetB()
