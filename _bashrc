@@ -38,3 +38,5 @@ PROMPT='%{%(!.$bg[default].%(?.$bg[$color_ok].$bg[$color_ng]))%}\
        %m%{$reset_color%} \
        %{$fg[blue]%}%B\$%b%{$reset_color%} '
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

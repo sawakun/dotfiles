@@ -66,7 +66,10 @@ augroup vimrc
 autocmd! FileType perl setlocal shiftwidth=4 tabstop=2 softtabstop=2
 autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd! FileType css  setlocal shiftwidth=4 tabstop=2 softtabstop=2
-autocmd! FileType eruby  setlocal shiftwidth=4 tabstop=2 softtabstop=2
+autocmd! FileType scss  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType ruby  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType eruby  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType javascript  setlocal shiftwidth=2 tabstop=2 softtabstop=2
 augroup END
 "
 " タブをスペースに展開しない (expandtab:展開する)
